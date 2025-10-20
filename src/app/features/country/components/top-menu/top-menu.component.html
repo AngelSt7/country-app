@@ -1,0 +1,11 @@
+<ul class="menu bg-base-200 sm:menu-horizontal rounded-box">
+    @for (item of menuItems; track $index) {
+    <li>
+        <a [routerLink]="item.route" routerLinkActive="bg-zinc-400/60 text-zinc-800 font-medium shadow-md scale-105"
+            [routerLinkActiveOptions]="{ exact: true }" class="btn transition-all duration-200">
+            <lucide-angular [img]="item.icon" class="w-5 h-5"></lucide-angular>
+            {{ item.label }}
+        </a>
+    </li>
+    }
+</ul>
