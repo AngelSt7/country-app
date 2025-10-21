@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { SearchInputComponent, TableCountryComponent } from "@/app/features/country/components";
+import { CountryStoreService } from '@/app/features/country/services';
 
 @Component({
   selector: 'app-capital-page',
@@ -8,11 +9,7 @@ import { SearchInputComponent, TableCountryComponent } from "@/app/features/coun
 })
 
 export class CapitalPageComponent {
-
   headers = ['#', 'Icono', 'Bandera', 'Nombre', 'Capital', 'Población']
-
-  onSearch(value: string) {
-    console.log(value);
-  }
+  public countryStore = inject(CountryStoreService)
 
 }

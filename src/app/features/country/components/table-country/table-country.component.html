@@ -10,6 +10,42 @@
 
     <tbody>
 
+        @for (item of items(); track item.name.common; let index = $index) {
+            <tr>
+                <td>{{ index + 1 }}</td>
+                <td>{{ item.flag }}</td>
+                <td>
+                    <img class="w-10" [src]="item.flags.svg" [alt]="item.flags.alt" />
+                </td>
+                <td>{{item.translations.spa?.common || item.name.common}}</td>
+                <td>{{item.capital || 'Sin capital'}}</td>
+                <td>{{item.population | number}}</td>
+                <td>
+                    <button class="text-sm hover:shadow cursor-pointer w-fit hover:bg-zinc-500/5 hover:rounded-2xl p-2 tranition-all duration-300 hover:text-zinc-800 font-semibold border-zinc-300 select-none active:scale-95 hover:scale-105"
+                    [routerLink]="['/country/by/slug', item.cca2]"
+                    >más información</button>  
+                </td>
+            </tr>
+        }
+
+        @if(errorMessage()){
+            <tr>
+                <td colspan="7" class="text-center">{{errorMessage()}}</td>
+            </tr>
+        }
+
+        @if(items().length === 0 && !isLoading()){
+            <tr>
+                <td colspan="7" class="text-center">No se encontraron resultados</td>
+            </tr>
+        }
+
+        @if(isLoading()){
+            <tr>
+                <td colspan="7" class="text-center">Cargando...</td>
+            </tr>
+        }
+
     </tbody>
 
 </table>

@@ -1,7 +1,10 @@
 <section class="mt-8">
-    <country-search-input (search)="onSearch($event)" />
+    <country-search-input (search)="countryStore.onSearch($event, 'country')" />
 </section>
 
 <section class="mt-8">
-    <country-table [headers]="headers" />
+    <country-table [headers]="headers" [items]="countryStore.searchByCountry.value() ?? []"
+        [errorMessage]="countryStore.searchByCountry.error()"
+        [isEmpty]="countryStore.searchByCountry.value()?.length === 0"
+        [isLoading]="countryStore.searchByCountry.isLoading()" />
 </section>

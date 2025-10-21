@@ -20,7 +20,7 @@ export const countryRoutes: Routes = [
                 component: RegionPageComponent
             },
             {
-                path: 'by/:slug',
+                path: 'by/slug/:slug',
                 component: BySlugPageComponent
             },
             {
